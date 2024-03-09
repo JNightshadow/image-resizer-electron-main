@@ -7,15 +7,18 @@ const widthInput = document.querySelector('#width');
 
 // Load image and show form
 function loadImage(e) {
+  console.log("Step 1");
   const file = e.target.files[0];
 
   // Check if file is an image
   if (!isFileImage(file)) {
+    console.log("step 3.1: file is not a document");
     alertError('Please select an image');
     return;
   }
 
   // Add current height and width to form using the URL API
+  console.log("step 3.2: it is an image. setting values of image");
   const image = new Image();
   image.src = URL.createObjectURL(file);
   image.onload = function () {
@@ -31,6 +34,7 @@ function loadImage(e) {
 
 // Make sure file is an image
 function isFileImage(file) {
+  console.log("step 2: check if file is image");
   const acceptedImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
   return file && acceptedImageTypes.includes(file['type']);
 }
